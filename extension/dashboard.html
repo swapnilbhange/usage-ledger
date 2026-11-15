@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Usage Ledger</title>
+	<link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+	<header>
+		<h1>Usage Ledger</h1>
+		<span id="updated" class="muted"></span>
+		<button id="openTab" class="textbtn">Open in a tab</button>
+	</header>
+
+	<div id="balance" class="balance" aria-label="Share of counted tokens by app"></div>
+	<nav id="tabs" class="tabs" role="tablist" aria-label="Apps"></nav>
+
+	<!-- ============================ All ============================ -->
+	<main id="panel-all" class="panel" role="tabpanel" hidden>
+		<div class="entry">
+			<h2>Balance</h2>
+			<div class="body">
+				<div id="allLedger"></div>
+				<p class="note">Tokens in the chats this browser has seen, counted with each app's own tokenizer. They are estimates unless marked otherwise below.</p>
+			</div>
+		</div>
+		<div class="entry">
+			<h2>Quota</h2>
+			<div class="body"><div id="allQuota"></div></div>
+		</div>
+		<div class="entry">
+			<h2>Largest chats</h2>
+			<div class="body"><div class="tablewrap"><table id="convTableAll"></table></div></div>
+		</div>
+		<div class="entry">
+			<h2>Tokenizer by app and model</h2>
+			<div class="body">
+				<p class="note">Chosen automatically from the model selected in each chat, one message at a time, so a model switch mid-chat is handled. Estimate means no exact offline tokenizer exists for that model.</p>
+				<div class="tablewrap"><table id="tokMap"></table></div>
+			</div>
+		</div>
+	</main>
+
+	<!-- ============================ Claude ============================ -->
+	<main id="panel-claude" class="panel" role="tabpanel" hidden>
+		<div class="entry">
+			<h2>Quota</h2>
+			<div class="body">
+				<section id="cards" class="cards"></section>
+				<p id="insight" class="insight"></p>
+			</div>
+		</div>
+		<div class="entry">
+			<h2>Utilization over time</h2>
+			<div class="body">
+				<div class="shead"><span class="legend"><span class="sw five"></span>Session (5h) <span class="sw seven"></span>Weekly (7d)</span><div id="rangeBtns" class="seg"></div></div>
+				<div id="chartLine"></div>
+			</div>
+		</div>
+		<div class="entry">
+			<h2>Weekly quota per day</h2>
+			<div class="body">
+				<p class="note">Percentage points of your weekly limit. <span class="sw acc"></span>Chats seen in this browser <span class="sw gray"></span>Unattributed (other devices, Claude Code, gaps between samples)</p>
+				<div id="chartDaily"></div>
+			</div>
+		</div>
+		<div class="entry">
+			<h2>Cost per message</h2>
+			<div class="body">
+				<p class="note">Average session quota used by one message, grouped by how big the chat already was. Long chats re-send their whole history every turn.</p>
+				<div id="chartBuckets"></div>
+			</div>
+		</div>
+		<div class="entry">
+			<h2>Chats</h2>
+			<div class="body"><div class="tablewrap"><table id="convTableClaude"></table></div></div>
+		</div>
+		<div class="entry">
+			<h2>Exact token counts</h2>
+			<div class="body">
+				<p class="note">Anthropic does not publish an offline tokenizer for current Claude models. If you add your own API key, each message is sent once to Anthropic's free <code>count_tokens</code> endpoint, counted with the chat's own model, and the result is cached. Anthropic describes the result as an estimate that can differ slightly. The key stays in this browser and is only sent to api.anthropic.com. Chat text goes to Anthropic, so leave this off if you would rather it didn't.</p>
+				<div id="apiBox"></div>
+			</div>
+		</div>
+	</main>
+
+	<!-- ============================ ChatGPT ============================ -->
+	<main id="panel-chatgpt" class="panel" role="tabpanel" hidden>
+		<div class="entry">
+			<h2>Balance</h2>
+			<div class="body"><div id="ledgerChatgpt"></div></div>
+		</div>
+		<div class="entry">
+			<h2>Chat sizes</h2>
+			<div class="body"><div id="sizesChatgpt"></div></div>
+		</div>
+		<div class="entry">
+			<h2>Chats</h2>
+			<div class="body"><div class="tablewrap"><table id="convTableChatgpt"></table></div></div>
+		</div>
+		<div class="entry">
+			<h2>Counting</h2>
+			<div class="body"><div id="howChatgpt"></div></div>
+		</div>
+	</main>
+
+	<!-- ============================ Gemini ============================ -->
+	<main id="panel-gemini" class="panel" role="tabpanel" hidden>
+		<div class="entry">
+			<h2>Balance</h2>
+			<div class="body"><div id="ledgerGemini"></div></div>
+		</div>
+		<div class="entry">
+			<h2>Chat sizes</h2>
+			<div class="body"><div id="sizesGemini"></div></div>
+		</div>
+		<div class="entry">
+			<h2>Chats</h2>
+			<div class="body"><div class="tablewrap"><table id="convTableGemini"></table></div></div>
+		</div>
+		<div class="entry">
+			<h2>Counting</h2>
+			<div class="body"><div id="howGemini"></div></div>
+		</div>
+	</main>
+
+	<!-- ============================ Settings ============================ -->
+	<main id="panel-settings" class="panel" role="tabpanel" hidden>
+		<div class="entry">
+			<h2>Settings</h2>
+			<div class="body"><form id="settings" autocomplete="off"></form></div>
+		</div>
+		<div class="entry">
+			<h2>Your data</h2>
+			<div class="body">
+				<div class="row">
+					<button id="expCsv" class="btn">Export samples (CSV)</button>
+					<button id="expJson" class="btn">Export everything (JSON)</button>
+					<button id="clear" class="btn danger">Clear all data</button>
+				</div>
+				<p class="note">Everything is stored locally in this browser. Nothing is sent anywhere, unless you turn on exact Claude counts (then message text goes to api.anthropic.com for counting). The JSON export never includes your API key.</p>
+			</div>
+		</div>
+	</main>
+
+	<script src="core.js"></script>
+	<script src="providers.js"></script>
+	<script src="dashboard.js"></script>
+</body>
+</html>
