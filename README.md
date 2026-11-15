@@ -1,3 +1,7 @@
+<div align="center">
+
+<img src="docs/screenshots/icon-128.png.png" alt="Usage Ledger icon" width="110"/>
+
 # Usage Ledger
 
 **Token counter and usage history for Claude, ChatGPT & Gemini.**
@@ -6,6 +10,10 @@
 ![license](https://img.shields.io/badge/license-MIT-1f9d82)
 ![manifest](https://img.shields.io/badge/Chrome-Manifest%20V3-5b7fe8)
 ![privacy](https://img.shields.io/badge/data-stays%20in%20your%20browser-17222b)
+
+</div>
+
+---
 
 A Chromium extension (Chrome, Edge, Brave, Arc) that counts every chat's tokens **with the right tokenizer for the site and the model you picked**, shows a live usage bar attached to the message box, and gives you one dashboard for all three apps. On claude.ai it also keeps a history of your Session and Weekly limits, so you can see where they went.
 
