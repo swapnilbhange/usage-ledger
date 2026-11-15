@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="docs/screenshots/icon-128.png.png" alt="Usage Ledger icon" width="110"/>
+<img src="docs/screenshots/icon-128.png" alt="Usage Ledger icon" width="110"/>
 
 # Usage Ledger
 
