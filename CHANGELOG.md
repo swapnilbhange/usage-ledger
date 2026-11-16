@@ -15,6 +15,9 @@ Versions 0.1.0 to 0.3.0 were developed in a single continuous working session, s
 ### Changed
 - Minimum Chrome version is now 114 (the popover API).
 
+### Distribution
+- Accepted by the Chrome Web Store and published: <https://chromewebstore.google.com/detail/usage-ledger/dfgnanojcdndnjcllgjaijdlkmapldan>.
+
 ## [0.3.0] - 2026-11-15
 
 ### Added

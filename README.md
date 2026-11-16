@@ -67,7 +67,9 @@ The two message-box screenshots were taken on local test pages that imitate each
 
 ## Install
 
-Not on the Chrome Web Store (yet, see the [roadmap](ROADMAP.md)). Install it as an unpacked extension:
+**From the Chrome Web Store (recommended):** [Usage Ledger on the Chrome Web Store](https://chromewebstore.google.com/detail/usage-ledger/dfgnanojcdndnjcllgjaijdlkmapldan). Click *Add to Chrome*. The listing is currently unlisted, so use this link to find it.
+
+You can also install it as an unpacked extension:
 
 **From a release zip**
 1. Download `usage-ledger-<version>.zip` from the [Releases](../../releases) page and unzip it.
@@ -178,7 +180,7 @@ The short version (the full list, with what is not planned, is in [ROADMAP.md](R
 
 - **0.3.x:** verify and fix placement and readers on the live sites, using real diagnostics from users.
 - **0.4:** token history over time for ChatGPT and Gemini, threshold alerts, a standalone options page, CSV export of chats.
-- **0.5:** Chrome Web Store release, bundled Gemma 4 vocabulary when the newer Gemini models are confirmed to use it, Edge and Brave smoke tests.
+- **0.5:** bundled Gemma 4 vocabulary when the newer Gemini models are confirmed to use it, Edge and Brave smoke tests.
 - **Later:** Firefox, more sites, per-project totals.
 
 ## Release notes

@@ -28,7 +28,7 @@ The biggest gap today is that the live-site behaviour was only tested on mock pa
 
 ## 0.5: distribution  (Planned)
 
-- [ ] Publish to the **Chrome Web Store** (privacy policy page, listing copy, screenshots on live sites).
+- [x] Publish to the **Chrome Web Store** ([listing](https://chromewebstore.google.com/detail/usage-ledger/dfgnanojcdndnjcllgjaijdlkmapldan)).
 - [ ] Review the Gemma vocabulary licensing for store distribution, or make that file an optional first-run download.
 - [ ] Add the **Gemma 4 vocabulary** once it is confirmed that the newer Gemini models (3.1 / 3.5) use it, so more Gemini counts become exact.
 - [ ] Smoke-test on **Edge, Brave and Arc**.
