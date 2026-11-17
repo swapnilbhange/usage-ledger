@@ -151,6 +151,12 @@ test('anchor (chatgpt / gemini): under the composer card, found from the editabl
 	const rounded = dom(`<div id="outer"><div id="card" style="border-radius:24px"><div><textarea></textarea></div></div></div>`);
 	assert.strictEqual(A.findAnchor('openai', rounded).el.id, 'card');
 	assert.strictEqual(A.findAnchor('openai', dom('<div>no composer</div>')), null);
+	// an editable inside the conversation (ChatGPT's email writing block) is not the message box, even when it comes first
+	const wb = dom(`<main><div data-thread-user-message-navigation-content="true"><div data-testid="chatgpt-writing-block"><div id="wbcard" style="border-radius:16px"><div class="ProseMirror" contenteditable="true" role="textbox" aria-label="Start writing"></div></div></div></div><form id="card"><div class="x" contenteditable="true" role="textbox"></div></form></main>`);
+	assert.strictEqual(A.findAnchor('openai', wb).el.id, 'card');
+	// only an in-conversation editor on the page: no anchor, so the floating pill is used instead of a strip inside the chat
+	const onlyWb = dom(`<main><div data-testid="chatgpt-writing-block"><div style="border-radius:16px"><div class="ProseMirror" contenteditable="true"></div></div></div></main>`);
+	assert.strictEqual(A.findAnchor('openai', onlyWb), null);
 	// hidden editables are ignored
 	const hidden = dom(`<form id="f"><textarea style="display:none"></textarea></form>`);
 	assert.strictEqual(A.findAnchor('openai', hidden), null);

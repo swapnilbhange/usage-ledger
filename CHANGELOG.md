@@ -6,6 +6,12 @@ All notable changes to this project are recorded here. The format follows
 
 Versions 0.1.0 to 0.3.0 were developed in a single continuous working session, so earlier entries carry no separate release dates.
 
+## [0.3.2] - 2026-11-17
+
+### Fixed
+- **Usage bar jumped into the chat on ChatGPT.** When a reply contained ChatGPT's email "writing block" (an editable "Start writing" box), the bar was placed under that box, inside the conversation, and moved around when the suggestion chips appeared. Editable areas that belong to the conversation are now ignored, so the bar stays under the real message box. If no message box can be found, the floating pill is used instead.
+- Regression tests for both cases.
+
 ## [0.3.1] - 2026-11-15
 
 ### Fixed
@@ -89,6 +95,7 @@ First version: a Claude-only usage ledger combining ideas from claude-counter an
 - Local history, charts, CSV and JSON export, clear-all.
 - Floating pill UI. Everything stored locally.
 
+[0.3.2]: ../../releases/tag/v0.3.2
 [0.3.1]: ../../releases/tag/v0.3.1
 [0.3.0]: ../../releases/tag/v0.3.0
 [0.2.2]: ../../releases/tag/v0.2.2

@@ -1,6 +1,6 @@
 {
   "name": "usage-ledger",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "private": true,
   "description": "Chrome extension: per-site, per-model token counts for Claude, ChatGPT and Gemini, plus a local usage history for claude.ai.",
   "author": "Swapnil Bhange (created with the help of Claude, by Anthropic)",

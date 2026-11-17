@@ -6,7 +6,7 @@
 
 **Token counter and usage history for Claude, ChatGPT & Gemini.**
 
-![version](https://img.shields.io/badge/version-0.3.1-c2453a)
+![version](https://img.shields.io/badge/version-0.3.2-c2453a)
 ![license](https://img.shields.io/badge/license-MIT-1f9d82)
 ![manifest](https://img.shields.io/badge/Chrome-Manifest%20V3-5b7fe8)
 ![privacy](https://img.shields.io/badge/data-stays%20in%20your%20browser-17222b)

@@ -35,4 +35,4 @@ Message text is held in memory only long enough to count it. A hash of each mess
 ## Independence
 This is an unofficial extension, not affiliated with Anthropic, OpenAI or Google. Check each service's own terms before use.
 
-*Last updated for v0.3.1.*
+*Last updated for v0.3.2.*

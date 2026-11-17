@@ -185,6 +185,19 @@
 		}
 	}
 
+	/** Parts of the page that hold the conversation, never the message box. */
+	const IN_THREAD = [
+		'[data-testid="chatgpt-writing-block"]',
+		'[data-message-author-role]',
+		'[data-user-message-bubble]',
+		'[data-thread-user-message-navigation-content]',
+		'[data-turn-key]',
+		'[data-testid^="conversation-turn"]',
+		'article',
+		'user-query',
+		'model-response'
+	].join(',');
+
 	const EDITABLE = [
 		'#prompt-textarea',
 		'[data-testid="composer-text-input"]',
@@ -208,7 +221,8 @@
 		let ed = null;
 		for (const q of EDITABLE) {
 			for (const c of doc.querySelectorAll(q)) {
-				if (isShown(c)) {
+				// editors inside the conversation itself (ChatGPT's email "writing block", canvas, editable code in a reply) are not the message box
+				if (isShown(c) && !c.closest(IN_THREAD)) {
 					ed = c;
 					break;
 				}
